@@ -1,0 +1,9 @@
+ ## Phase 1: Data Cleaning & Validation
+
+The raw table undergoes strong validation checks to ensure accuracy and consistency:
+| Cleaning Step              | Action                                                                    |
+| -------------------------- | ------------------------------------------------------------------------- |
+| Null Check                 | Find and highlight missing values in key columns                          |
+| Blank / Empty String Check | Detect fields containing non-null but blank values                        |
+| Duplicate Detection        | Group on business-critical fields to locate duplicates                    |
+| Duplicate Removal          | Use `ROW_NUMBER()` logic to retain one copy and delete surplus duplicates |
