@@ -1,0 +1,22 @@
+## Phase 2: Dimensional Modelling (Star Schema)
+
+To optimize analytics and reporting, the raw dataset is transformed into a Star Schema.
+
+| Table            | Columns                          |
+| ---------------- | -------------------------------- |
+| `dim_date`       | Date, Year, Month, Quarter, Week |
+| `dim_location`   | State, City, Location            |
+| `dim_restaurant` | Restaurant_Name                  |
+| `dim_category`   | Category / Cuisine               |
+| `dim_dish`       | Dish_Name                        |
+
+
+## Why Star Schema?
+
+Reduces duplication and increases clarity
+
+Faster dashboard performance
+
+Consistent business definitions of KPIs
+
+Works perfectly with BI tools like Power BI & Tableau
