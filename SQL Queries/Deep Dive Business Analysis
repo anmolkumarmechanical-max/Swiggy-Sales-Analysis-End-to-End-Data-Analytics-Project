@@ -1,0 +1,103 @@
+--DEEP DIVE BUSINESS ANALYSIS
+
+--Monthly Order Trends
+Select
+d.year,
+d.month,
+d.month_name,
+count(*) as Total_Orders
+from fact_swiggy_orders f
+join dim_date d on
+f.date_id = d.date_id
+group by d.year,
+d.month,
+d.month_name
+order by count(*) desc
+
+--Quarterly Trend
+Select
+d.year,
+d.quarter,
+count(*) as Total_Orders
+from fact_swiggy_orders f
+join dim_date d on
+f.date_id = d.date_id
+group by d.year,
+d.quarter
+order by count(*) desc
+
+--Yearly Trend
+Select
+d.year,
+count(*) as Total_Orders
+from fact_swiggy_orders f
+join dim_date d on
+f.date_id = d.date_id
+group by d.year
+order by count(*) desc
+
+-- Orders by Day of Week (Mon-Sun)
+Select
+DATENAME(Weekday, d.full_date) as day_name,
+count(*) as Total_Orders
+from fact_swiggy_orders f
+join dim_date d on
+f.date_id = d.date_id
+group by DATENAME(Weekday, d.full_date), Datepart(Weekday, d.full_date)
+order by Datepart(Weekday, d.full_date)
+
+--Top 10 cities by order volume
+Select top 10
+l.city,
+count(*) as Total_Orders from fact_swiggy_orders f
+join dim_location l
+on l.location_id = f.location_id
+group by l.City
+order by count(*) desc 
+
+--Revenue contribution by states
+Select 
+l.state,
+Sum(f.price_inr) as Total_Revenue from fact_swiggy_orders f
+join dim_location l
+on l.location_id = f.location_id
+group by l.State
+order by Sum(f.price_inr) desc 
+
+--Top 10 Restaurants by orders
+Select 
+r.restaurant_name,
+Sum(f.price_inr) as Total_Revenue from fact_swiggy_orders f
+join dim_restaurant r
+on r.restaurant_id = f.restaurant_id
+group by r.restaurant_name
+order by Sum(f.price_inr) desc 
+
+--Top Categories by order volume
+select
+c.category,
+count(*) as total_orders
+from fact_swiggy_orders f
+join dim_category c on f.category_id = c.category_id
+group by c.category
+order by total_orders desc
+
+--Most Ordered Dishes
+Select 
+d.dish_name,
+count(*) as order_count
+from fact_swiggy_orders f
+join dim_dish d on f.dish_id = d.dish_id
+group by d.dish_name
+order by order_count desc
+
+--Cuisine Performance (Orders + Avg Rating)
+Select 
+c.category,
+count(*) as Total_Orders,
+Avg(f.rating) as avg_rating
+from fact_swiggy_orders f
+join dim_category c on f.category_id = c.category_id
+group by c.category
+order by Total_Orders desc
+
