@@ -1,0 +1,19 @@
+## Phase 3: KPI Development
+
+| Metric             | Description                            |
+| ------------------ | -------------------------------------- |
+| Total Orders       | Count of total transactions            |
+| Total Revenue      | SUM(Price_INR) — shown in INR Millions |
+| Average Dish Price | AVG(Price_INR)                         |
+| Average Rating     | AVG(Rating)                            |
+
+
+## Deep-Dive Analytical KPIs
+
+| Category       | Insights                                                                 |
+| -------------- | ------------------------------------------------------------------------ |
+| Date-Based     | Monthly / Quarterly trends, Year-over-year growth, Weekday order pattern |
+| Location-Based | Top 10 cities by orders, Revenue contribution by states                  |
+| Restaurant     | Top restaurants by orders, price & rating insights                       |
+| Cuisine        | Category performance vs rating                                           |
+| Dish           | Most ordered dishes & performance ranking                                |
