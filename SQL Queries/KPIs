@@ -1,0 +1,21 @@
+-- KPIs
+--Total Orders
+Select Count(*) as Total_Orders
+from fact_swiggy_orders
+
+--Total Revenue (INR Millions)
+Select
+FORMAT(sum(convert(float,price_INR))/1000000,'N2') + 'INR Millions'
+as Total_Revenue
+from fact_swiggy_orders
+
+--Avg Dish Price (INR Millions)
+Select
+FORMAT(avg(convert(float,price_INR)),'N2') + 'INR'
+as Total_Revenue
+from fact_swiggy_orders
+
+--Avg Rating
+Select
+avg(Rating) as Avg_Rating
+from fact_swiggy_orders
